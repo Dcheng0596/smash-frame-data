@@ -13,17 +13,17 @@ body {
   background: linear-gradient(
     to right, 
     rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0) 17.6%,
-    $white 17.6%,
-    $white 41.6%,
-    rgba(0, 0, 0, 0) 41.6%
+    rgba(0, 0, 0, 0) 15%,
+    $white 15%,
+    $white 35%,
+    rgba(0, 0, 0, 0) 35%
   ), linear-gradient(
     to top, 
     $black,
-    $black 33.3%,
-    $white 33.3%,
-    $white 43.3%,
-    $black 43.3%
+    $black 30%,
+    $white 30%,
+    $white 40%,
+    $black 40%
   )
 }
 
