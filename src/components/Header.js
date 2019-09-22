@@ -6,8 +6,8 @@ import Logo2 from '../assets/logos/logo2.png';
 function Header() {
     return(
       <Navbar>
-        <Navbar.Brand className="mr-auto">
-          <img href="./"
+        <Navbar.Brand href="/" className="mr-auto">
+          <img
             src={Logo1}
             alt="Smash Stats"
             className="d-none d-md-block"
