@@ -6,8 +6,8 @@ import Col from 'react-bootstrap/Col';
 
 function Grid() {
     return(
-      <Container className="">
-        <h1 class="display-4 font-weight-bold w-25 mx-auto ">Choose Your Fighter!</h1>
+      <Container className="text-warning font-weight-bold">
+        <h1 class="font-weight-bold text-center">Choose Your Fighter!</h1>
         <Row>
           <Col>
             <Search/>

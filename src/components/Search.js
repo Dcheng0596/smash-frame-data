@@ -6,13 +6,13 @@ import Form from 'react-bootstrap/Form'
 function Search() {
   return(
     <Form>
-      <Row>
-        <Col>
+      <Row className="justify-content-md-end">
+        <Col md={3}>
         <Form.Control className="center-block" type="search" placeholder="Search..." />
         </Col>
-        <Col>
-          <Form.Group as={Row} controlId="order-by">
-            <Form.Label coulumn className="d-inline">Order by</Form.Label>
+        <Col xs={6} md="auto">
+          <Form.Group as={Row} controlId="sort">
+            <Form.Label column md="2" className="text-center">Sort</Form.Label>
             <Col>
               <Form.Control as="select">
                 <option>Number</option>
@@ -25,13 +25,14 @@ function Search() {
             </Col>
           </Form.Group>
         </Col>
-        <Col>
-          <Form.Group as={Row} controlId="game-select">
-            <Form.Label column lassName="d-inline">Game</Form.Label>
+        <Col xs={6} md="auto">
+          <Form.Group as={Row} controlId="game">
+            <Form.Label column md="3" className="text-center">Game</Form.Label>
             <Col>
               <Form.Control as="select">
                 <option>Ultimate</option>
                 <option>Wii U</option>
+
               </Form.Control>
             </Col>
           </Form.Group>
