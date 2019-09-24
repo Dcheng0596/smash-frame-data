@@ -25,20 +25,22 @@ function FighterList() {
   const displayIcons = fighters!==null ? (
     fighters.map(fighter => {
       return (
-        <OverlayTrigger
-          trigger="hover"
-          overlay={
-          <Tooltip id={fighter.Name}><strong>{fighter.Name}</strong></Tooltip>
-          }
-        >
-          <img src={images[fighter.Name.replace(/\s/g, '') +'.png']} alt={fighter.Name} width="110" height="110"/>
-        </OverlayTrigger>
+        <div key={fighter.OwnerId} className="fighter-icon">
+          <OverlayTrigger
+            trigger="hover"
+            overlay={
+            <Tooltip id={fighter.Name}><strong>{fighter.DisplayName}</strong></Tooltip>
+            }
+          >
+            <img src={images[fighter.Name.replace(/\s/g, '') +'.png']} 
+                alt={fighter.DisplayName} width="110" height="110"/>
+          </OverlayTrigger>
+        </div>
       )
     })
   ) : (
     <Spinner animation="border" />
   );
-  
 
 
   return (
