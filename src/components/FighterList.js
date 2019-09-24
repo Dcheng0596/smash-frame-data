@@ -12,13 +12,13 @@ function importAll(r) {
   }
 
 // Display all fighters icons 
-function FighterList() {
+function FighterList({ game }) {
   const [fighters, setFighters] = useState(null);
   
   useEffect (() => {
-    axios.get("https://api.kuroganehammer.com/api/characters?game=ultimate")
-    .then(res => setFighters(res.data));
-  }, [])
+      axios.get("https://api.kuroganehammer.com/api/characters?game=" + game.replace(/\s/g, ''))
+      .then(res => setFighters(res.data));
+  }, [game])
   
   const images = importAll(require.context('../assets/fighters', false, /\.(png|jpe?g|svg)$/));
 

@@ -6,8 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function Grid() {
-  const [game, setGame] = useState(null);
-  const [order, setOrder] = useState(null);
+  const [game, setGame] = useState('Ultimate');
+  const [order, setOrder] = useState('Name');
   const changeGame = (game) => {
     setGame(game);
     console.log(game);
