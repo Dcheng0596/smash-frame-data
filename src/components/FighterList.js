@@ -20,7 +20,7 @@ function FighterList({ game }) {
       .then(res => setFighters(res.data));
   }, [game])
   
-  const images = importAll(require.context('../assets/fighters', false, /\.(png|jpe?g|svg)$/));
+  const images = importAll(require.context('../assets/icons', false, /\.(png|jpe?g|svg)$/));
 
   const displayIcons = fighters!==null ? (
     fighters.map(fighter => {
