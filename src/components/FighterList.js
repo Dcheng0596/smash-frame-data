@@ -20,9 +20,7 @@ function FighterList() {
     .then(res => setFighters(res.data));
   }, [])
   
-  if(Array.isArray(fighters))
-    console.log(fighters);
-  const images = importAll(require.context('../assets/icons', false, /\.(png|jpe?g|svg)$/));
+  const images = importAll(require.context('../assets/fighters', false, /\.(png|jpe?g|svg)$/));
 
   const displayIcons = fighters!==null ? (
     fighters.map(fighter => {
@@ -33,7 +31,7 @@ function FighterList() {
           <Tooltip id={fighter.Name}><strong>{fighter.Name}</strong></Tooltip>
           }
         >
-          <img src={images[ fighter.Name +'Icon.png']} alt={fighter.Name} width="110"/>
+          <img src={images[fighter.Name.replace(/\s/g, '') +'.png']} alt={fighter.Name} width="110" height="110"/>
         </OverlayTrigger>
       )
     })
@@ -45,6 +43,7 @@ function FighterList() {
 
   return (
     <div className="fighters">
+      {displayIcons}
     </div>
   )
 
