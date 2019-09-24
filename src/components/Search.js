@@ -16,7 +16,7 @@ function Search() {
             <Form.Label column md="2" className="text-center">Sort</Form.Label>
             <Col>
               <Form.Control as="select">
-                <option>Number</option>
+                <option>Name</option>
                 <option>Weight</option>
                 <option>Fall Speed</option>
                 <option>Air Speded</option>
