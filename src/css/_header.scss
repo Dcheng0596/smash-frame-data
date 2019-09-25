@@ -1,0 +1,14 @@
+@import 'variables';
+
+.nav-item .active{
+    background-color: $white !important;
+    color: $black !important;
+}
+
+.nav-item {
+    background-color: scale-color($black, $lightness: 5%) !important;
+}
+
+.nav-link{
+    color: $white !important;
+} 

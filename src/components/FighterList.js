@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Spinner from 'react-bootstrap/Spinner'
+import { GameContext } from '../contexts/GameContext';
 
 // Reduce the number of image imports
 function importAll(r) {
@@ -12,13 +13,16 @@ function importAll(r) {
   }
 
 // Display all fighters icons 
-function FighterList({ game, filter }) {
+function FighterList({ filter }) {
   const [fighters, setFighters] = useState(null);
+  const { game } = useContext(GameContext);
   let displayIcons;
 
   useEffect (() => {
    axios.get("https://api.kuroganehammer.com/api/characters?game=" + game.replace(/\s/g, ''))
    .then(res => setFighters(res.data));
+   console.log(game);
+   
   }, [game])
   
   const images = importAll(require.context('../assets/icons', false, /\.(png|jpe?g|svg)$/));
@@ -53,7 +57,7 @@ function FighterList({ game, filter }) {
 
   return (
     <div className="fighters d-flex justify-content-center flex-wrap">
-      {displayIcons}
+       {displayIcons}
     </div>
   )
 
