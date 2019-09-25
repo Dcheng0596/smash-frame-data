@@ -12,9 +12,10 @@ function importAll(r) {
   }
 
 // Display all fighters icons 
-function FighterList({ game, order }) {
+function FighterList({ game, filter }) {
   const [fighters, setFighters] = useState(null);
-  
+  let displayIcons;
+
   useEffect (() => {
    axios.get("https://api.kuroganehammer.com/api/characters?game=" + game.replace(/\s/g, ''))
    .then(res => setFighters(res.data));
@@ -22,28 +23,36 @@ function FighterList({ game, order }) {
   
   const images = importAll(require.context('../assets/icons', false, /\.(png|jpe?g|svg)$/));
 
-  const displayIcons = fighters!==null ? (
-    fighters.map(fighter => {
+  // Filters fighters based on filter string creates an array JSX of each filtered fighter
+  // Shows spinner if fighters haven't been fetched
+  if(fighters !== null) {
+    let filteredFighters = fighters;
+    if(filter !== '' ) {
+      filteredFighters = filteredFighters.filter( fighter => {
+        return fighter.DisplayName.toLowerCase().includes(filter.toLowerCase());
+      });
+    }
+    displayIcons = filteredFighters.map(fighter => {
       return (
-          <OverlayTrigger
-            key={fighter.OwnerId}
-            trigger="hover"
-            overlay={
-            <Tooltip id={fighter.Name}><strong>{fighter.DisplayName}</strong></Tooltip>
-            }
-          >
-            <img key={fighter.OwnerId} src={images[fighter.Name.replace(/\s/g, '') +'.png']} 
-                alt={fighter.DisplayName} width="110" height="110"/>
-          </OverlayTrigger>
+       <OverlayTrigger
+          key={fighter.OwnerId}
+          trigger="hover"
+          overlay={
+          <Tooltip id={fighter.Name}><strong>{fighter.DisplayName}</strong></Tooltip>
+          }
+        >
+          <img key={fighter.OwnerId} src={images[fighter.Name.replace(/\s/g, '') +'.png']} 
+               alt={fighter.DisplayName} width="110" height="110"/>
+       </OverlayTrigger>
       )
     })
-  ) : (
-    <Spinner animation="border" />
-  );
-
+  }
+  else {
+    displayIcons = <Spinner animation="border" />
+  }
 
   return (
-    <div className="fighters">
+    <div className="fighters d-flex justify-content-center flex-wrap">
       {displayIcons}
     </div>
   )
