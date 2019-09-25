@@ -7,22 +7,17 @@ import Col from 'react-bootstrap/Col';
 
 function Grid() {
   const [game, setGame] = useState('Ultimate');
-  const [order, setOrder] = useState('Name');
   const changeGame = (game) => {
     setGame(game);
     console.log(game);
   }
-  const changeOrder = (order) => {
-    setOrder(order);
-    console.log(order);
-  }
-  
+
   return(
     <Container className="fluid text-warning font-weight-bold">
       <h1 className="font-weight-bold text-center">Choose Your Fighter!</h1>
       <Row>
         <Col>
-          <Search changeGame={changeGame} changeOrder={changeOrder}/>
+          <Search changeGame={changeGame}/>
         </Col>
       </Row>
       <Row>

@@ -12,12 +12,12 @@ function importAll(r) {
   }
 
 // Display all fighters icons 
-function FighterList({ game }) {
+function FighterList({ game, order }) {
   const [fighters, setFighters] = useState(null);
   
   useEffect (() => {
-      axios.get("https://api.kuroganehammer.com/api/characters?game=" + game.replace(/\s/g, ''))
-      .then(res => setFighters(res.data));
+   axios.get("https://api.kuroganehammer.com/api/characters?game=" + game.replace(/\s/g, ''))
+   .then(res => setFighters(res.data));
   }, [game])
   
   const images = importAll(require.context('../assets/icons', false, /\.(png|jpe?g|svg)$/));

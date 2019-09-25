@@ -4,27 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form'
 
 // From that querys the fighters
-function Search({ changeGame, changeOrder }) {
+function Search({ changeGame}) {
   return(
     <Form>
       <Row className="justify-content-md-end">
         <Col md={3}>
         <Form.Control className="center-block" type="search" placeholder="Search..." />
-        </Col>
-        <Col xs={6} md="auto">
-          <Form.Group as={Row} controlId="sort">
-            <Form.Label column md="2" className="text-center">Sort</Form.Label>
-            <Col>
-              <Form.Control as="select" onChange={ e => {changeOrder(e.target.value)}}>
-                <option>Name</option>
-                <option>Weight</option>
-                <option>Fall Speed</option>
-                <option>Air Speded</option>
-                <option>Run Speed</option>
-                <option>Walk Speed</option>
-              </Form.Control>
-            </Col>
-          </Form.Group>
         </Col>
         <Col xs={6} md="auto">
           <Form.Group as={Row} controlId="game">
