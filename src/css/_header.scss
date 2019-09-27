@@ -6,7 +6,7 @@
 }
 
 .nav-item {
-    background-color: scale-color($black, $lightness: 5%) !important;
+    background-color: transparentize($white, .93) !important;
 }
 
 .nav-link{

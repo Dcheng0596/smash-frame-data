@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Logo1 from '../assets/logos/logo1.png';
 import Logo2 from '../assets/logos/logo2.png';
+import { Link} from 'react-router-dom'
 import { GameContext } from '../contexts/GameContext';
 
 
@@ -11,17 +12,21 @@ function Header() {
     
     return(
       <Navbar>
-        <Navbar.Brand href="/" className="mr-auto">
-          <img
-            src={Logo1}
-            alt="Smash Stats"
-            className="d-none d-md-block"
-         />
-         <img href="./"
-            src={Logo2}
-            alt="Smash Stats"
-            className="d-md-none"
-         />
+        <Navbar.Brand  className="mr-auto">
+          <Link to='/'>
+            <img
+              src={Logo1}
+              alt="Smash Stats"
+              className="d-none d-md-block"
+            />
+          </Link>
+          <Link to='/'>
+            <img
+              src={Logo2}
+              alt="Smash Stats"
+              className="d-md-none"
+            />
+          </Link>
         </Navbar.Brand>
         <Nav variant="pills" defaultActiveKey="Ultimate">
           <Nav.Item >

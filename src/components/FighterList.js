@@ -3,6 +3,7 @@ import axios from 'axios';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Spinner from 'react-bootstrap/Spinner'
+import { Link} from 'react-router-dom'
 import { GameContext } from '../contexts/GameContext';
 
 // Reduce the number of image imports
@@ -21,13 +22,12 @@ function FighterList({ filter }) {
   useEffect (() => {
    axios.get("https://api.kuroganehammer.com/api/characters?game=" + game.replace(/\s/g, ''))
    .then(res => setFighters(res.data));
-   console.log(game);
    
   }, [game])
   
   const images = importAll(require.context('../assets/icons', false, /\.(png|jpe?g|svg)$/));
 
-  // Filters fighters based on filter string creates an array JSX of each filtered fighter
+  // Filters fighters based on filter string creates an array of JSX of each filtered fighter
   // Shows spinner if fighters haven't been fetched
   if(fighters !== null) {
     let filteredFighters = fighters;
@@ -45,8 +45,10 @@ function FighterList({ filter }) {
           <Tooltip id={fighter.Name}><strong>{fighter.DisplayName}</strong></Tooltip>
           }
         >
-          <img key={fighter.OwnerId} src={images[fighter.Name.replace(/\s/g, '') +'.png']} 
-               alt={fighter.DisplayName} width="110" height="110"/>
+          <Link to={'/' + game.replace(/\s/g, '') + '/' + fighter.Name}>
+            <img key={fighter.OwnerId} src={images[fighter.Name.replace(/\s/g, '') +'.png']} 
+                 alt={fighter.DisplayName} width="110" height="110"/>
+          </Link>
        </OverlayTrigger>
       )
     })
