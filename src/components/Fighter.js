@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function Fighter({ ...props }) {
   const [moves, setMoves] = useState(null);
-
+ const [attributes, setAttributes] = useState(null);
 
   const fighterName = props.match.params.fighter;
   const gameName = props.match.params.game;
@@ -23,10 +23,16 @@ function Fighter({ ...props }) {
     });
 
     
+    axios.get("https://api.kuroganehammer.com/api/characters/name/" + fighterName + "/movements?game=" + gameName)
+    .then(res => {
+      setAttributes(res.data);}
+    );
+
     axios.get("https://api.kuroganehammer.com/api/characters/name/" + fighterName + "/moves?game=" + gameName)
     .then(res => {
       setMoves(res.data);}
     );
+
 
     return function cleanup() {
         document.body.style.background = "linear-gradient( to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 17%, " 
@@ -36,26 +42,19 @@ function Fighter({ ...props }) {
 
   }, [])
 
-  const moveTable = moves !== null ? (
+  const groundMoves = moves !== null ? (
       moves.map( move => {
-        if(move.MoveType == "ground") {
-            console.log("equal");
-            
+        if(move.MoveType == "ground") {   
             return (
               <tr key={move.Name}>
                 <td><strong>{move.Name}</strong></td>
                 <td>{move.HitboxActive}</td>
                 <td>{move.FirstActionableFrame}</td>
                 <td>{move.BaseDamage}</td>
-                <td>{move.Angle}</td>
                 <td>{move.BaseKnockBackSetKnockback}</td>
                 <td>{move.KnockbackGrowth}</td>
               </tr>
             )
-        }
-        else {
-          console.log("notEqual");
-          
         }
       })
     )
@@ -63,23 +62,153 @@ function Fighter({ ...props }) {
        <tr></tr>
     );
 
+    const aerialMoves = moves !== null ? (
+        moves.map( move => {
+          if(move.MoveType == "aerial") {   
+              return (
+                <tr key={move.Name}>
+                  <td><strong>{move.Name}</strong></td>
+                  <td>{move.HitboxActive}</td>
+                  <td>{move.FirstActionableFrame}</td>
+                  <td>{move.BaseDamage}</td>
+                  <td>{move.BaseKnockBackSetKnockback}</td>
+                  <td>{move.KnockbackGrowth}</td>
+                  <td>{move.LandingLag}</td>
+                  <td>{move.Autocancel}</td>
+                </tr>
+              )
+          }
+        })
+      )
+      : (
+         <tr></tr>
+      );
+
+      const throwMoves = moves !== null ? (
+        moves.map( move => {
+          if(move.MoveType == "throw") {   
+              return (
+                <tr key={move.Name}>
+                  <td><strong>{move.Name}</strong></td>
+                  <td>{move.BaseDamage}</td>
+                  <td>{move.Angle}</td>
+                  <td>{move.BaseKnockBackSetKnockback}</td>
+                  <td>{move.KnockbackGrowth}</td>
+                </tr>
+              )
+          }
+        })
+      )
+      : (
+         <tr></tr>
+      );
+      const specialMoves = moves !== null ? (
+        moves.map( move => {
+          if(move.MoveType == "special") {   
+              return (
+                <tr key={move.Name}>
+                  <td><strong>{move.Name}</strong></td>
+                  <td>{move.HitboxActive}</td>
+                  <td>{move.FirstActionableFrame}</td>
+                  <td>{move.BaseDamage}</td>
+                  <td>{move.BaseKnockBackSetKnockback}</td>
+                  <td>{move.KnockbackGrowth}</td>
+                </tr>
+              )
+          }
+        })
+      )
+      : (
+         <tr></tr>
+      );
+
+      const attr = attributes !== null ? (
+        attributes.map( attribute => {
+            return (
+            <tr key={attribute.Name}>
+                <td><strong>{attribute.Name}</strong></td>
+                <td>{attribute.Value}</td>
+            </tr>
+            )
+        })
+      )
+      : (
+         <tr></tr>
+      );
+
   return(
     <div className="container fighter ">
       <img className="image-fluid mx-auto d-block"src={filePath} alt={fighterName}/>
-      <Table responsive bordered hover>
+      <Table className="ground" responsive bordered hover>
         <thead>
-            <tr>
+          <tr>
             <th>Attacks</th>
             <th>Active Frames</th>
             <th>First Actable Frame</th>
             <th>Base Damage</th>
+            <th>Base Knockback</th>
+            <th>Knockback Growth</th>
+          </tr>
+        </thead>
+        <tbody>
+            {groundMoves}
+        </tbody>
+      </Table>
+      <Table className="aerial" responsive bordered hover>
+        <thead>
+          <tr>
+            <th>Attacks</th>
+            <th>Active Frames</th>
+            <th>First Actable Frame</th>
+            <th>Base Damage</th>
+            <th>Base Knockback</th>
+            <th>Knockback Growth</th>
+            <th>Lag</th>
+            <th>Autocancel</th>
+           </tr>
+        </thead>
+        <tbody>
+          {aerialMoves}
+        </tbody>
+      </Table>
+      <Table className="throw" responsive bordered hover>
+        <thead>
+          <tr>
+            <th>Attacks</th>
+            <th>Base Damage</th>
             <th>Angle</th>
             <th>Base Knockback</th>
             <th>Knockback Growth</th>
-            </tr>
+           </tr>
         </thead>
         <tbody>
-            {moveTable}
+          {throwMoves}
+        </tbody>
+      </Table>
+      <Table className="special" responsive bordered hover>
+        <thead>
+          <tr>
+            <th>Attacks</th>
+            <th>Active Frames</th>
+            <th>First Actable Frame</th>
+            <th>Base Damage</th>
+            <th>Base Knockback</th>
+            <th>Knockback Growth</th>
+           </tr>
+        </thead>
+        <tbody>
+          {specialMoves}
+        </tbody>
+      </Table>
+      <Table className="attributes" responsive bordered hover>
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {attr}
         </tbody>
       </Table>
     </div>
