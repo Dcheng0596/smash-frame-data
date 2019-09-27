@@ -17,6 +17,12 @@
   height: auto;
 }
 
+tr {
+  line-height: 12px;
+  min-height: 12px;
+  height: 12px;
+}
+
 html {
   height: 100%;
 }
