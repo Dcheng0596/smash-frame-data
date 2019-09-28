@@ -138,7 +138,15 @@ function Fighter({ ...props }) {
 
   return(
     <div className="container fighter ">
+      <div className="d-flex flex-wrap justify-content-center">
+        <a href="#ground"><button className="px-4 py-3">Ground</button></a>
+        <a href="#aerial"><button className="px-4 py-3">Aerial</button></a>
+        <a href="#throw"><button className="px-4 py-3">Throw</button></a>
+        <a href="#special"><button className="px-4 py-3">Special</button></a>
+        <a href="#attribute"><button className="px-4 py-3">Attribute</button></a>
+      </div>
       <img className="image-fluid mx-auto d-block"src={filePath} alt={fighterName}/>
+      <h1 id="ground" className="text-center" >Ground</h1>
       <Table className="ground" responsive bordered hover>
         <thead>
           <tr>
@@ -154,6 +162,7 @@ function Fighter({ ...props }) {
             {groundMoves}
         </tbody>
       </Table>
+      <h1 id="aerial" className="text-center" >Aerial</h1>
       <Table className="aerial" responsive bordered hover>
         <thead>
           <tr>
@@ -171,6 +180,7 @@ function Fighter({ ...props }) {
           {aerialMoves}
         </tbody>
       </Table>
+      <h1 id="throw" className="text-center" >Throw</h1>
       <Table className="throw" responsive bordered hover>
         <thead>
           <tr>
@@ -185,6 +195,7 @@ function Fighter({ ...props }) {
           {throwMoves}
         </tbody>
       </Table>
+      <h1 id="special" className="text-center" >Special</h1>
       <Table className="special" responsive bordered hover>
         <thead>
           <tr>
@@ -200,6 +211,7 @@ function Fighter({ ...props }) {
           {specialMoves}
         </tbody>
       </Table>
+      <h1 id="attribute" className="text-center" >Attribute</h1>
       <Table className="attributes" responsive bordered hover>
         <thead>
           <tr>
