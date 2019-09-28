@@ -13,7 +13,6 @@ function Grid() {
 
   return(
     <Container className="fluid" >
-      <h1 className="font-weight-bold text-center">Choose Your Fighter!</h1>
       <Row>
         <Col>
           <Search  handleFilter={handleFilter}/>
