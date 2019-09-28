@@ -15,16 +15,16 @@ function Header() {
         <Navbar.Brand  className="mr-auto">
           <Link to='/'>
             <img
-              src={Logo1}
+              src={Logo1} width = "80"
               alt="Smash Stats"
-              className="d-none d-md-block"
+              className="d-none d-sm-block"
             />
           </Link>
           <Link to='/'>
             <img
               src={Logo2}
               alt="Smash Stats"
-              className="d-md-none"
+              className="d-sm-none"
             />
           </Link>
         </Navbar.Brand>
