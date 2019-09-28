@@ -139,11 +139,11 @@ function Fighter({ ...props }) {
   return(
     <div className="container fighter ">
       <div className="d-flex flex-wrap justify-content-center">
-        <a href="#ground"><button className="px-4 py-3">Ground</button></a>
-        <a href="#aerial"><button className="px-4 py-3">Aerial</button></a>
-        <a href="#throw"><button className="px-4 py-3">Throw</button></a>
-        <a href="#special"><button className="px-4 py-3">Special</button></a>
-        <a href="#attribute"><button className="px-4 py-3">Attribute</button></a>
+        <a href="#ground"><button >Ground</button></a>
+        <a href="#aerial"><button >Aerial</button></a>
+        <a href="#throw"><button >Throw</button></a>
+        <a href="#special"><button >Special</button></a>
+        <a href="#attribute"><button >Attribute</button></a>
       </div>
       <img className="image-fluid mx-auto d-block"src={filePath} alt={fighterName}/>
       <h1 id="ground" className="text-center" >Ground</h1>

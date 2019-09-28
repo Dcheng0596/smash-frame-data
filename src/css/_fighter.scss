@@ -19,7 +19,8 @@
         border: none;
         border-radius: 5px;
         width: 160px;
-        margin: 30px 30px;
+        margin: 1.5rem 1.9rem;
+        padding: 1rem ;
 
         &:hover {
             background-color: transparentize($black, .3);
@@ -60,7 +61,64 @@
     }
     
     img {
-        margin: 60px 0px 100px 0px;
+        margin: 30px 0px 150px 0px;
     }
 
+}
+
+@media screen and (max-width: 1025px) {
+    .fighter {
+        button {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background-color: transparentize($black, .45);
+            color: $white;
+            border: none;
+            border-radius: 5px;
+            width: 150px;
+            margin: 1.5rem 1rem;
+            padding: 1rem ;
+    
+            &:hover {
+                background-color: transparentize($black, .3);
+            }
+    
+            &:active {
+                background-color: transparentize($black, .3);
+            }
+    
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+   .fighter {
+        button {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background-color: transparentize($black, .45);
+            color: $white;
+            border: none;
+            border-radius: 5px;
+            width: 140px;
+            margin: .5rem;
+            padding: 1rem ;
+
+            &:hover {
+                background-color: transparentize($black, .3);
+            }
+
+            &:active {
+                background-color: transparentize($black, .3);
+            }
+
+            &:focus {
+                outline: 0;
+            }
+        }
+   }
 }
