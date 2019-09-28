@@ -1,5 +1,5 @@
 {
-  "name": "smash-stats",
+  "name": "smash-frame-data",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
