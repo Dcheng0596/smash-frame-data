@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from './components/Header';
 import Grid from './components/Grid';
 import Fighter from './components/Fighter'
+import Page404 from './components/Page404'
 import GameContextProvider from './contexts/GameContext';
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
         <GameContextProvider>
           <Header/>
           <Switch>
-            <Route exact path='/' component={Grid} />
             <Route path='/:game/:fighter' component={Fighter} />
+            <Route path='/' component={Grid} />
+            <Route component={Page404} />
           </Switch>
         </GameContextProvider>
       </div>
