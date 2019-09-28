@@ -8,7 +8,7 @@ import GameContextProvider from './contexts/GameContext';
 function App() {
   return (
     <BrowserRouter>
-      <div className="smash-stats text-warning font-bold">
+      <div className="smash-stats font-bold">
         <GameContextProvider>
           <Header/>
           <Switch>
