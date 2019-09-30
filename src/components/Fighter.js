@@ -137,14 +137,14 @@ function Fighter({ ...props }) {
       );
 
   return(
-    <div className="container fighter ">
-      <div className="d-flex flex-wrap justify-content-center">
+    <main className="container fighter ">
+      <nav className="d-flex flex-wrap justify-content-center">
         <a href="#ground"><button >Ground</button></a>
         <a href="#aerial"><button >Aerial</button></a>
         <a href="#throw"><button >Throw</button></a>
         <a href="#special"><button >Special</button></a>
         <a href="#attribute"><button >Attribute</button></a>
-      </div>
+      </nav>
       <img className="image-fluid mx-auto d-block"src={filePath} alt={fighterName}/>
       <h1 id="ground" className="text-center" >Ground</h1>
       <Table className="ground" responsive bordered hover>
@@ -223,7 +223,7 @@ function Fighter({ ...props }) {
           {attr}
         </tbody>
       </Table>
-    </div>
+    </main>
   );
 }
 
